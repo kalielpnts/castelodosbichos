@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Castelo dos bichos | Buffet Infantil completo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* RESET & GERAL */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cor-primaria: #664830; /* marrom */
+      --cor-secundaria: #0b5a2a; /* verde */
+      --cor-terciaria: #5bad7b;
+      --cor-acento: #71be88; /* bege dourado */
+      --cor-fundo: #F9F6F0;
+      --cor-texto: #5a5a5a;
+      --cor-branco: #ffffff;
+      --sombra: 0 4px 12px rgba(0,0,0,0.1);
+      --transicao: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--cor-texto);
+      background-color: var(--cor-fundo);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: var(--cor-secundaria);
+      color: var(--cor-branco);
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transicao);
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #117744;
+      transform: translateY(-2px);
+      box-shadow: var(--sombra);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--cor-branco);
+      color: var(--cor-branco);
+    }
+
+    .btn-outline:hover {
+        border: 2px solid #117744;
+      background-color: #117744;
+      color: var(--cor-branco);
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+        width: fit-content;
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+      color: var(--cor-primaria);
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--cor-acento);
+      transition: 0.6s;
+    }
+
+    .quem-somos:hover .section-title::after,
+    #localizacao:hover .section-title::after,
+    #galeria:hover .section-title::after,
+    #servicos:hover .section-title::after,
+    #depoimentos:hover .section-title::after,
+    #contato:hover .section-title::after,
+    #apresentacao:hover .section-title::after{
+        width: 80%;
+    }
+
+    /* PRELOADER */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--cor-terciaria);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255,255,255,0.3);
+      border-top: 5px solid var(--cor-branco);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* TOPBAR */
+    .topbar {
+      background-color: var(--cor-terciaria);
+      color: var(--cor-branco);
+      padding: 7px 0;
+      font-size: 0.8rem;
+    }
+
+    .topbar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topbar-left,
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .topbar i {
+      margin-right: 5px;
+    }
+
+    .container-topo{
+        position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    /* HEADER */
+    header {
+    width: 100%;  
+      background-color: var(--cor-branco);
+      transition: var(--transicao);
+    }
+
+    header.scrolled {
+      box-shadow: var(--sombra);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--cor-primaria);
+    }
+
+    .logo span {
+      color: var(--cor-terciaria);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-menu a {
+      font-weight: 600;
+      color: var(--cor-texto);
+      position: relative;
+      padding: 5px 0;
+    }
+
+    .nav-menu a:hover{
+        color: var(--cor-secundaria);
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--cor-terciaria);
+      transition: var(--transicao);
+    }
+
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after {
+      width: 100%;
+    }
+
+    .nav-menu i {
+      margin-right: 8px;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(49, 37, 21, 0.6), rgba(37, 27, 18, 0.6)), url(fundo1.png) no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--cor-branco);
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 100px auto 0;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* SEÇÃO QUEM SOMOS */
+    .quem-somos {
+      background-color: #f1f1f1;
+    }
+
+    .quem-somos-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .quem-somos-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--cor-primaria);
+    }
+
+    .quem-somos-text p {
+      margin-bottom: 15px;
+    }
+
+    .quem-somos-image img {
+        height: 400px;
+        margin-left: 80px;
+      border-radius: 15px;
+      box-shadow: var(--sombra);
+    }
+
+    /* LOCALIZAÇÃO */
+    .localizacao-content {
+      text-align: center;
+    }
+
+    .location-icon {
+      font-size: 3rem;
+      color: rgb(243, 71, 71);
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .map-btn {
+      margin-top: 20px;
+    }
+
+    /* GALERIA */
+    #galeria{
+        background-color: #664830;
+    }
+
+    .galeria-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .galeria-item {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: var(--transicao);
+    }
+
+    .galeria-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    /* SERVIÇOS */
+    .servicos-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .servico-card {
+      background: var(--cor-branco);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: var(--sombra);
+      transition: var(--transicao);
+    }
+
+    .servico-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .servico-icon {
+      font-size: 2.5rem;
+      color: var(--cor-secundaria);
+      margin-bottom: 20px;
+    }
+
+    .servico-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--cor-primaria);
+    }
+
+    /* DEPOIMENTOS */
+    
+    .depoimentos-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .depoimento {
+      background: var(--cor-branco);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: var(--sombra);
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .depoimento.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .depoimento-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      object-fit: cover;
+      border: 3px solid var(--cor-acento);
+    }
+
+    .depoimento-text {
+      font-style: italic;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .depoimento-author {
+      font-weight: 600;
+      color: var(--cor-primaria);
+    }
+
+    .depoimento-nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .depoimento-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ddd;
+      cursor: pointer;
+      transition: var(--transicao);
+    }
+
+    .depoimento-dot.active {
+      background-color: var(--cor-secundaria);
+    }
+
+    /* CONTATO */
+    .contato-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contato-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--cor-primaria);
+    }
+
+    .contato-info p {
+      margin-bottom: 15px;
+    }
+
+    .contato-form .form-group {
+      margin-bottom: 20px;
+    }
+
+    .contato-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .contato-form input,
+    .contato-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .contato-form textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    /* APRESENTAÇÃO */
+    .apresentacao-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .apresentacao-image img {
+      border-radius: 15px;
+      box-shadow: var(--sombra);
+    }
+
+    .apresentacao-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--cor-primaria);
+    }
+
+    .apresentacao-text p {
+      margin-bottom: 20px;
+    }
+
+    /* RODAPÉ */
+    footer {
+      background-color: #094722;
+      color: var(--cor-branco);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .footer-title {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+      width: fit-content;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--cor-acento);
+      transition: 0.6s;
+    }
+
+    .footer-column:hover .footer-title::after{
+        width: 100%;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul li a:hover {
+      color: var(--cor-acento);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      transition: var(--transicao);
+    }
+
+    .social-icons a:hover {
+      background-color: var(--cor-acento);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* WHATSAPP FIXO */
+    #whatsapp-fixo {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: var(--transicao);
+    }
+
+    #whatsapp-fixo:hover {
+      transform: scale(1.1);
+      background-color: #128C7E;
+      & .mensagem-wpp{
+         opacity: 1;
+      }
+    }
+
+    .mensagem-wpp {
+        width: 230%;
+        opacity: 0;
+  background-color: #333;
+  font-size: 15px;
+  padding: 15px;
+  color: #ffffff;
+  position: fixed;
+  bottom: 5px;
+  right: 90px;
+  transition: opacity 0.5s;
+}
+
+.triangulo{
+    position: fixed;
+    right: 70px;
+    bottom: 18px;
+    border-top: 15px solid transparent;
+    border-left: 30px solid #333;
+    border-bottom: 15px solid transparent;
+  }
+
+    /* ANIMAÇÕES DE ENTRADA */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .quem-somos-content,
+      .contato-content,
+      .apresentacao-content {
+        grid-template-columns: 1fr;
+      }
+
+      .quem-somos-image,
+      .apresentacao-image {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .topbar-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="container-topo">
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-left">
+        <span>Bem-vindo ao Castelo dos Bichos – onde cada festa é mágica!</span>
+      </div>
+      <div class="topbar-right">
+        <a href="mailto:contato@castelodosbichos.com.br"><i class="fas fa-envelope"></i> contato@castelodosbichos.com.br</a>
+        <a href="https://wa.me/5519993280705" target="_blank"><i class="fab fa-whatsapp"></i> (19) 99328-0705</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container header-content">
+      <a href="#" class="logo"><span><i style="font-size: 35px;" class="fa-brands fa-fort-awesome"></i></span>  Castelo <span>dos Bichos</span></a>
+      <ul class="nav-menu">
+        <li><a href="#hero" class="active"><i class="fas fa-home"></i> Início</a></li>
+        <li><a href="#quem-somos"><i class="fas fa-users"></i> Quem Somos</a></li>
+        <li><a href="#servicos"><i class="fas fa-star"></i> Serviços</a></li>
+        <li><a href="#galeria"><i class="fas fa-images"></i> Galeria</a></li>
+        <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
+      </ul>
+    </div>
+  </header>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero" class="hero fade-in">
+    <div class="hero-content">
+      <h1>Um Mundo de Diversão Seguro para Seu Filho</h1>
+      <p>Buffet infantil premium, totalmente imersivo e temático, com estrutura completa e equipe especializada para tornar o dia do seu pequeno inesquecível!</p>
+      <div class="hero-buttons">
+        <a href="#galeria" class="btn">Conheça Nosso Espaço</a>
+        <a href="#contato" class="btn btn-outline">Fale Conosco</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM SOMOS -->
+  <section id="quem-somos" class="quem-somos fade-in">
+    <div class="container">
+        <center>
+      <h2 class="section-title">Quem Somos</h2>
+      </center>
+      <div class="quem-somos-content">
+        <div class="quem-somos-text">
+          <h2>Segurança, Satisfação e Alegria em Primeiro Lugar</h2>
+          <p>No Castelo dos Bichos, entendemos que a tranquilidade dos pais é tão importante quanto a diversão das crianças. Por isso, investimos em uma estrutura pensada nos mínimos detalhes para garantir segurança, higiene e conforto.</p>
+          <p>Nossa equipe é formada por profissionais especializados em recreação infantil, primeiros socorros e atendimento humanizado. Cada brinquedo é higienizado diariamente, e nossa cozinha segue rigorosos protocolos de segurança alimentar.</p>
+          <p>Com o novo espaço, pretendemos transformar milhares de eventos em memórias inesquecíveis!</p>
+        </div>
+        <div class="quem-somos-image">
+          <img src="logo.castelodosbichos.png" alt="Logo Castelo dos Bichos Buffet">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section id="localizacao" class="fade-in">
+    <div class="container">
+        <center>
+      <h2 class="section-title">Localização</h2>
+      </center>
+      <div class="localizacao-content">
+        <div class="location-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <p>Estamos localizados em Americana - São Paulo, com fácil acesso e estacionamento gratuito.</p>
+        <a href="https://www.google.com/maps/place/R.+Paraguai,+175+-+Cechino,+Americana+-+SP,+13465-730/@-22.7457487,-47.3418038,17z/data=!3m1!4b1!4m6!3m5!1s0x94c89bda8524a093:0xf690579e2b44cf6!8m2!3d-22.7457487!4d-47.3418038!16s%2Fg%2F11gfhhkq9r?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn map-btn">Ver no Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section id="galeria" class="fade-in">
+    <div class="container">
+        <center>
+      <h2 class="section-title" style="color: #fff;">Galeria de Fotos</h2>
+      </center>
+      <div class="galeria-content">
+        <div class="galeria-item"><img src="festa6.png" alt="Festa 1"></div>
+        <div class="galeria-item"><img src="imagem1.png" alt="Festa 2"></div>
+        <div class="galeria-item"><img src="imagem2.png" alt="Festa 3"></div>
+        <div class="galeria-item"><img src="imagem6.png" alt="Festa 5"></div>
+        <div class="galeria-item"><img src="imagem5.png" alt="Festa 6"></div>
+        <div class="galeria-item"><img src="festa7.png" alt="Festa 6"></div>
+        <div class="galeria-item"><img src="festa12.png" alt="Festa 6"></div>
+        <div class="galeria-item"><img src="imagem3.png" alt="Festa 4"></div>
+        <div class="galeria-item"><img src="festa8.png" alt="Festa 4"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" class="fade-in">
+    <div class="container">
+        <center>
+      <h2 class="section-title">Nossos Diferenciais</h2>
+      </center>
+      <div class="servicos-content">
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Segurança Total</h3>
+          <p>Monitoramento constante, brinquedos certificados e equipe treinada em primeiros socorros.</p>
+        </div>
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fas fa-user-friends"></i>
+          </div>
+          <h3>Monitoria Especializada</h3>
+          <p>Profissionais qualificados para cuidar e entreter seu filho com atividades educativas e divertidas.</p>
+        </div>
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <h3>Alimentação de Qualidade</h3>
+          <p>Cardápio balanceado, sem conservantes, com opções para restrições alimentares.</p>
+        </div>
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3>Estrutura Completa</h3>
+          <p>Salão climatizado, parquinho indoor, cozinha gourmet e estacionamento privativo.</p>
+        </div>
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fa-solid fa-paw"></i>
+          </div>
+          <h3>Tema Imersivo</h3>
+          <p>Decoração exclusiva e divertida para o seu filho entrar no reino animal.</p>
+        </div>
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <h3>Atividades Recreativas</h3>
+          <p>Oficinas criativas, teatrinho, contação de histórias e brincadeiras tradicionais.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" class="fade-in">
+    <div class="container">
+        <center>
+      <h2 class="section-title">Depoimentos de Pais</h2>
+      </center>
+      <div class="depoimentos-content">
+        <div class="depoimento active">
+          <img src="https://placehold.co/80x80/8b5e3c/ffffff?text=A" alt="Ana" class="depoimento-avatar">
+          <p class="depoimento-text">"Meu filho não parava de falar sobre a festa! A equipe foi atenciosa, segura e criativa. Valeu cada centavo!"</p>
+          <p class="depoimento-author">Ana Paula, mãe do Lucas (5 anos)</p>
+        </div>
+        <div class="depoimento">
+          <img src="https://placehold.co/80x80/5a8f7b/ffffff?text=C" alt="Carlos" class="depoimento-avatar">
+          <p class="depoimento-text">"Como pai solteiro, fiquei tranquilo sabendo que meu filho estava em boas mãos. A organização foi impecável!"</p>
+          <p class="depoimento-author">Carlos Eduardo, pai da Sofia (4 anos)</p>
+        </div>
+        <div class="depoimento">
+          <img src="https://placehold.co/80x80/d4a574/ffffff?text=J" alt="Juliana" class="depoimento-avatar">
+          <p class="depoimento-text">"A alimentação foi um diferencial! Minha filha tem restrições alimentares e eles prepararam tudo com carinho."</p>
+          <p class="depoimento-author">Juliana, mãe da Clara (3 anos)</p>
+        </div>
+        <div class="depoimento">
+          <img src="https://placehold.co/80x80/8b5e3c/ffffff?text=M" alt="Mariana" class="depoimento-avatar">
+          <p class="depoimento-text">"Escolhemos o Castelo dos Bichos pela estrutura diferenciada, e saímos extremamente satisfeitos. Meu filho aproveitou cada detalhe e os convidados elogiaram muito."</p>
+          <p class="depoimento-author">Mariana Albuquerque, mãe do Lucas (6 anos)</p>
+        </div>
+        <div class="depoimento">
+          <img src="https://placehold.co/80x80/5a8f7b/ffffff?text=J" alt="João" class="depoimento-avatar">
+          <p class="depoimento-text">"A equipe foi atenciosa do início ao fim. O cuidado com as crianças e a organização do evento superaram nossas expectativas."</p>
+          <p class="depoimento-author">João Henrique, pai da Valentina (5 anos)</p>
+        </div>
+        <div class="depoimento">
+          <img src="https://placehold.co/80x80/5a8f7b/ffffff?text=F" alt="Fernanda" class="depoimento-avatar">
+          <p class="depoimento-text">"Ambiente seguro, limpo e muito bem planejado. Meu filho adorou as atividades, e eu fiquei realmente tranquila durante toda a festa."</p>
+          <p class="depoimento-author">Fernanda Silveira, mãe do Pedro (3 anos)</p>
+        </div>
+        <div class="depoimento">
+          <img src="https://placehold.co/80x80/8b5e3c/ffffff?text=R" alt="Roberta" class="depoimento-avatar">
+          <p class="depoimento-text">"Foi uma experiência excelente. O espaço é criativo, divertido e administrado com profissionalismo. Recomendo sem hesitar."</p>
+          <p class="depoimento-author">Roberta Moura, mãe do Miguel (7 anos)</p>
+        </div>
+        <div class="depoimento">
+          <img src="https://placehold.co/80x80/5a8f7b/ffffff?text=R" alt="Ricardo" class="depoimento-avatar">
+          <p class="depoimento-text">"O atendimento foi impecável, e cada detalhe demonstrou carinho e compromisso. A festa da Helena ficou inesquecível para toda a família."</p>
+          <p class="depoimento-author">Ricardo e Aline Santos, pais da Helena (4 anos)</p>
+        </div>
+        <div class="depoimento-nav">
+          <div class="depoimento-dot active" data-index="0"></div>
+          <div class="depoimento-dot" data-index="1"></div>
+          <div class="depoimento-dot" data-index="2"></div>
+          <div class="depoimento-dot" data-index="3"></div>
+          <div class="depoimento-dot" data-index="4"></div>
+          <div class="depoimento-dot" data-index="5"></div>
+          <div class="depoimento-dot" data-index="6"></div>
+          <div class="depoimento-dot" data-index="7"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="fade-in">
+    <div class="container">
+        <center>
+      <h2 class="section-title">Fale Conosco</h2>
+      </center>
+      <div class="contato-content">
+        <div class="contato-info">
+          <h3>Entre em contato</h3>
+          <p><i class="fas fa-envelope"></i> contato@castelodosbichos.com.br</p>
+          <p><i class="fab fa-whatsapp"></i> (19) 99328-0705</p>
+          <p><i class="fas fa-phone"></i> (19) 99328-0705</p>
+          <p><i class="fas fa-map-marker-alt"></i> Rua Paraguai, 175 - Cechino, Americana/SP</p>
+        </div>
+        <form class="contato-form" id="form-contato">
+          <div class="form-group">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" required>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" required></textarea>
+          </div>
+          <button type="submit" class="btn">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- APRESENTAÇÃO -->
+  <section id="apresentacao" class="fade-in">
+    <div class="container">
+        <center>
+      <h2 class="section-title">Sobre Este Projeto</h2>
+      </center>
+      <div class="apresentacao-content">
+        <div class="apresentacao-image">
+          <img src="imagem12.png" alt="Projeto Fictício">
+        </div>
+        <div class="apresentacao-text">
+          <h2>Projeto Fictício para Demonstração</h2>
+          <p>Este site é para um projeto fictício desenvolvido exclusivamente para fins de criação de empresa em técnico de administração. Todas as informações, contatos e serviços apresentados são imaginários.</p>
+          <p>O objetivo é mostrar como seria um site para um buffet infantil temático, com foco em segurança, organização e experiência positiva para pais e crianças.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3 class="footer-title"><span><i style="font-size: 25px; color: #71be88;" class="fa-brands fa-fort-awesome"></i> Castelo dos Bichos</h3>
+          <p style="font-size: 15px; color: #ebebeb;"> O seu mais novo Buffet infantil favorito! Planejado especialmente para criar memórias inesquecíveis para as crianças e tranquilidade para os papais em qualquer evento!</p>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Links Rápidos</h3>
+          <ul style="font-size: 15px; color: #ebebeb;">
+            <li><a href="#hero">Início</a></li>
+            <li><a href="#quem-somos">Quem Somos</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Serviços</h3>
+          <ul style="font-size: 15px; color: #ebebeb;">
+            <li><a href="#">Festas de Aniversário</a></li>
+            <li><a href="#">Buffet amplo</a></li>
+            <li><a href="#">Recreação Infantil</a></li>
+            <li><a href="#">Pacotes Personalizados</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Contatos</h3>
+          <p style="font-size: 14px; color: #ebebeb;"><i class="fas fa-envelope"></i> contato@castelodosbichos.com.br</p>
+          <p style="font-size: 14px; color: #ebebeb;"><i class="fab fa-whatsapp"></i> (19) 99328-0705</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/castelodosbichosofc?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5519993280705" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Castelo dos Bichos. Todos os direitos reservados. Projeto fictício para demonstração.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FIXO -->
+  <a href="https://wa.me/5519993280705" target="_blank" id="whatsapp-fixo">
+    <i class="fab fa-whatsapp"></i>
+    <div class="mensagem-wpp">Fale Conosco!<div class="triangulo"></div></div>
+  </a>
+
+  <script>
+    // PRELOADER
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.classList.add('hidden');
+      }, 1500);
+    });
+
+    // HEADER STICKY
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // INTERSECTION OBSERVER PARA ANIMAÇÕES
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // CARROSSEL DE DEPOIMENTOS
+    let currentDepoimento = 0;
+    const depoimentos = document.querySelectorAll('.depoimento');
+    const dots = document.querySelectorAll('.depoimento-dot');
+
+    function showDepoimento(index) {
+      depoimentos.forEach(dep => dep.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      depoimentos[index].classList.add('active');
+      dots[index].classList.add('active');
+      currentDepoimento = index;
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        showDepoimento(parseInt(dot.dataset.index));
+      });
+    });
+
+    // Mudança automática a cada 5 segundos
+    setInterval(() => {
+      currentDepoimento = (currentDepoimento + 1) % depoimentos.length;
+      showDepoimento(currentDepoimento);
+    }, 5000);
+
+    // VALIDAÇÃO DO FORMULÁRIO
+    const form = document.getElementById('form-contato');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validação simples
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const telefone = document.getElementById('telefone').value;
+        const mensagem = document.getElementById('mensagem').value;
+        
+        if (nome && email && telefone && mensagem) {
+          alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+          form.reset();
+        } else {
+          alert('Por favor, preencha todos os campos.');
+        }
+      });
+    }
+
+    // ATUALIZAÇÃO DO MENU ATIVO
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      
+      let currentSection = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
